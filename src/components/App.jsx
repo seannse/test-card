@@ -1,16 +1,17 @@
+import { ThemeProvider } from 'styled-components';
+import GlobalStyles from 'styles/GlobalStyles.styled';
+import { theme } from 'styles/theme';
+
+import { Section } from './App.styled';
+import { UserList } from './UserList/UserList';
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <Section>
+        <UserList />
+      </Section>
+    </ThemeProvider>
   );
 };
