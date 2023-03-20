@@ -7,23 +7,12 @@ const useStore = create(
   persist(
     set => ({
       users,
-      increaseFollowers: id =>
+      toggleIsFollowing: updateUser =>
         set(
           immer(state => {
-            state.users[id].followers = state.users[id].followers + 1;
-          })
-        ),
-      decreaseFollowers: id =>
-        set(
-          immer(state => {
-            state.users[id].followers = state.users[id].followers - 1;
-          })
-        ),
-
-      toggleIsFollowing: id =>
-        set(
-          immer(state => {
-            state.users[id].isFollowing = !state.users[id].isFollowing;
+            state.users = state.users.map(user => {
+              return user.id !== updateUser.id ? user : updateUser;
+            });
           })
         ),
     }),

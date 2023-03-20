@@ -3,15 +3,20 @@ import logo from 'images/Logo-min.png';
 import boy from 'images/Hansel.png';
 import useStore from 'utils/store';
 import { StyledButton, StyledUserCard } from './UserCard.styled';
+import { operation } from 'utils/operations';
 
 export const UserCard = ({ id, tweets, followers, isFollowing }) => {
-  const increaseFollowers = useStore(state => state.increaseFollowers);
-  const decreaseFollowers = useStore(state => state.decreaseFollowers);
   const toggleFollowing = useStore(state => state.toggleIsFollowing);
 
   const handleClick = () => () => {
-    toggleFollowing(id);
-    isFollowing ? decreaseFollowers(id) : increaseFollowers(id);
+    toggleFollowing({
+      id,
+      tweets,
+      isFollowing: !isFollowing,
+      followers: isFollowing
+        ? operation.minus(followers, 1)
+        : operation.plus(followers, 1),
+    });
   };
 
   return (

@@ -1,19 +1,19 @@
 export const users = [
   {
-    id: 0,
+    id: 78,
     tweets: 777,
     followers: 100500,
     isFollowing: false,
   },
 
   {
-    id: 1,
+    id: 79,
     tweets: 2,
     followers: 10,
     isFollowing: false,
   },
   {
-    id: 2,
+    id: 80,
     tweets: 40,
     followers: 140,
     isFollowing: false,
